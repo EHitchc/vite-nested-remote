@@ -6,17 +6,21 @@
   "scripts": {
     "dev": "vite --port 5000 --strictPort",
     "build": "vite build",
+    "build:watch": "vite build --watch",
     "preview": "vite preview --port 5000 --strictPort",
-    "serve": "vite preview --port 5000 --strictPort"
+    "serve": "vite preview --port 5000 --strictPort",
+    "buildAndServe": "concurrently -n watch,serve \"pnpm run build:watch\" \"wait-on ./dist && pnpm run preview\""
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "@vitejs/plugin-react": "^3.0.0",
-    "vite": "^4.3.2"
+    "concurrently": "^8.2.0",
+    "vite": "^4.3.2",
+    "wait-on": "^7.0.1"
   }
 }

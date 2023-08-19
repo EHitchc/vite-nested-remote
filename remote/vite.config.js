@@ -9,6 +9,13 @@ export default defineConfig({
     federation({
       name: "remote_app",
       filename: "remoteEntry.js",
+      remotes: {
+        'nestedWebpackRemote': {
+          external: 'http://localhost:5002/remoteEntry.js',
+          from: 'webpack',
+          format: 'var'
+        }
+      },
       exposes: {
         './Button': './src/components/Button'
       },

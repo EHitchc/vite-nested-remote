@@ -1,14 +1,23 @@
 
 import "./Button.css"
 
-import { useState } from "react"
+import { Suspense, lazy, useState } from "react"
+
+const WebpackButton = lazy(() => import('nestedWebpackRemote/Button'))
 
 export const Button = () => {
   const [state, setState] = useState(0)
   return (
-    <div>
-      <button id='click-btn' className='shared-btn' onClick={() => setState((s) => s + 1)}>Click me: {state}</button>
-    </div>
+    <>
+      <div style={{ marginBottom: '1rem' }}>
+        <button id='click-btn' className='shared-btn' onClick={() => setState((s) => s + 1)}>Click me: {state}</button>
+      </div>
+      <div>
+        <Suspense fallback={<h1>Loading Webpack MFE</h1>}>
+          <WebpackButton />
+        </Suspense>
+      </div>
+    </>
   )
 }
 
