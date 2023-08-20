@@ -7,16 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "remote_app",
+      name: "nestedViteRemote",
       filename: "remoteEntry.js",
-      remotes: {
-        'nestedWebpackRemote': {
-          external: 'http://localhost:5002/remoteEntry.js',
-          from: 'webpack',
-          format: 'var'
-        },
-        'nestedViteRemote': 'http://localhost:5003/assets/remoteEntry.js'
-      },
       exposes: {
         './Button': './src/components/Button'
       },

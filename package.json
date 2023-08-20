@@ -10,9 +10,10 @@
     "dev:hosts": "pnpm --filter \"./host\" dev",
     "stop": "kill-port --port 5000,5001",
     "start:nestedWedpackRemote": "pnpm --filter nested-webpack-remote run start",
+    "buildWatchAndServe:nestedViteRemote": "pnpm --filter nested-vite-remote run buildAndServe",
     "buildWatchAndServe:viteRemote": "pnpm --filter shared run buildAndServe",
     "buildWatchAndServe:viteHost": "pnpm --filter app run buildAndServe",
-    "start:all": "concurrently -n wp:nested,vite:remote,vite:host \"pnpm run start:nestedWedpackRemote\" \"pnpm run buildWatchAndServe:viteRemote\" \"pnpm run buildWatchAndServe:viteHost\""
+    "start:all": "concurrently -n wp:nested,vite:nested,vite:remote,vite:host \"pnpm run start:nestedWedpackRemote\" \"pnpm run buildWatchAndServe:nestedViteRemote\" \"pnpm run buildWatchAndServe:viteRemote\" \"pnpm run buildWatchAndServe:viteHost\""
   },
   "devDependencies": {
     "@originjs/vite-plugin-federation": "^1.2.3",
