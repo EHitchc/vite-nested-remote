@@ -21,8 +21,10 @@ module.exports = {
       {
         test: /\.[jt]sx?$/,
         loader: 'esbuild-loader',
+        exclude: /node_modules/,
         options: {
-          target: 'es2021'
+          target: 'es2021',
+          tsconfig: path.resolve(__dirname, './tsconfig.json'),
         }
       }
     ]
